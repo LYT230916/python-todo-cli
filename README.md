@@ -96,4 +96,3 @@ Task added with ID 1.
 - Export and import tasks as CSV
 - Edit or reorder task IDs
 - Add a simple graphical interface
-

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f7f4">
+  <title>今日待办 · To-do</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="/"><span class="brand-mark">✓</span><span>daymark</span></a>
+      <div class="side-label">WORKSPACE</div>
+      <nav class="nav" aria-label="任务视图">
+        <button class="nav-item active" data-filter="all"><span>▦</span> 所有任务 <b id="nav-total">0</b></button>
+        <button class="nav-item" data-filter="pending"><span>◷</span> 待完成</button>
+        <button class="nav-item" data-filter="completed"><span>✓</span> 已完成</button>
+      </nav>
+      <div class="sidebar-bottom"><span class="online-dot"></span> 本地保存 · 随时可用</div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar"><div class="breadcrumb">工作区 <span>/</span> <strong id="crumb">所有任务</strong></div><div class="today" id="today"></div></header>
+      <section class="content">
+        <div class="heading-row"><div><div class="eyebrow">YOUR DAY, YOUR PACE</div><h1 id="page-title">所有任务</h1><p class="subtitle" id="page-subtitle">把重要的事，一件一件做好。</p></div><button class="primary-btn" id="add-open"><span>＋</span> 新建任务</button></div>
+        <section class="stats" aria-label="任务概况">
+          <article class="stat-card"><div class="stat-icon lilac">▤</div><div><div class="stat-label">全部任务</div><div class="stat-value" id="stat-total">0</div></div><div class="stat-note">持续向前</div></article>
+          <article class="stat-card"><div class="stat-icon amber">◷</div><div><div class="stat-label">待完成</div><div class="stat-value" id="stat-pending">0</div></div><div class="stat-note">从一件开始</div></article>
+          <article class="stat-card"><div class="stat-icon green">✓</div><div><div class="stat-label">已完成</div><div class="stat-value" id="stat-completed">0</div></div><div class="stat-note">做得不错</div></article>
+        </section>
+        <section class="task-panel">
+          <div class="panel-toolbar"><div class="tabs"><button class="tab active" data-filter="all">全部</button><button class="tab" data-filter="pending">待完成</button><button class="tab" data-filter="completed">已完成</button></div><label class="search"><span>⌕</span><input id="search" type="search" placeholder="搜索任务…" aria-label="搜索任务"></label></div>
+          <div class="task-list" id="task-list" aria-live="polite"></div>
+        </section>
+        <footer>小步前进，也是在前进。 <span>✳</span></footer>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="task-dialog">
+    <form id="task-form">
+      <div class="dialog-head"><div><div class="eyebrow">MAKE IT HAPPEN</div><h2 id="dialog-title">新建任务</h2></div><button type="button" class="icon-button" id="dialog-close" aria-label="关闭">×</button></div>
+      <input type="hidden" id="task-id">
+      <label class="field">任务名称 <input id="title" required maxlength="120" placeholder="例如：完成项目提案"></label>
+      <label class="field">描述 <textarea id="description" rows="3" maxlength="600" placeholder="补充一些细节…"></textarea></label>
+      <div class="field-grid"><label class="field">优先级<select id="priority"><option>High</option><option selected>Medium</option><option>Low</option></select></label><label class="field">分类<select id="category"><option>DSA</option><option>Python</option><option>SQL</option><option>Web Development</option><option>College</option><option>Job</option><option selected>Personal</option><option>Other</option></select></label></div>
+      <label class="field">截止日期 <input id="due-date" type="date"></label>
+      <div class="form-error" id="form-error" role="alert"></div>
+      <div class="dialog-actions"><button type="button" class="secondary-btn" id="cancel">取消</button><button class="primary-btn" type="submit">保存任务</button></div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="/app.js" defer></script>
+</body>
+</html>
